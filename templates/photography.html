@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photography | Samuel Bollman</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body { background-color: #0f0f0f; color: #fff; scroll-behavior: smooth; }
+        
+        /* Photography Fixed Header */
+        .photo-nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(15, 15, 15, 0.98);
+            border-bottom: 1px solid #2a2a2a;
+            z-index: 1000;
+            padding: 15px 0;
+        }
+
+        .back-link { color: #888; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+        .back-link:hover { color: #fff; }
+
+        .roll-link { color: #666; text-decoration: none; font-size: 0.8rem; margin-left: 20px; text-transform: uppercase; letter-spacing: 2px; }
+        .roll-link:hover { color: #fff; }
+
+        section { padding: 140px 0 80px 0; border-bottom: 1px solid #2a2a2a; }
+        section:last-of-type { border-bottom: none; }
+
+        /* 35mm Film Grid Styling */
+        .photo-slot {
+            aspect-ratio: 3 / 2;
+            background-color: #151515;
+            border: 1px solid #222;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .photo-slot img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: 0.3s;
+        }
+
+        .photo-slot:hover img { opacity: 1; }
+
+        .roll-meta { 
+            color: #666; 
+            font-size: 0.9rem; 
+            margin-bottom: 40px; 
+            max-width: 800px;
+            line-height: 1.6;
+        }
+
+        .empty-roll-text {
+            color: #333;
+            font-style: italic;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+        <div class="modal-content bg-transparent border-0">
+            <div class="modal-body p-0 text-center">
+                <img src="" id="modalImage" class="img-fluid rounded shadow-lg" style="max-height: 90vh;">
+            </div>
+        </div>
+    </div>
+</div>
+<body>
+
+    <nav class="photo-nav">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a href="/personal" class="back-link">&lt; Back</a>
+            <div>
+                <a href="#roll1" class="roll-link">Roll 001</a>
+                <a href="#roll2" class="roll-link">Roll 002</a>
+                <a href="#roll3" class="roll-link">Roll 003</a>
+            </div>
+        </div>
+    </nav>
+<section id="roll1">
+    <div class="container">
+        <h2 class="mb-2">Roll 001</h2>
+        <p class="roll-meta">
+            Captured on 35mm film. This sequence is ordered from the most recent 
+            frames (IMG_5607) back through the roll.
+        </p>
+        
+        <div class="row g-2">
+            {% set filenames = [
+                'IMG_5607.JPG', 'IMG_5595.JPG', 'IMG_5581.JPG', 'IMG_5605.JPG', 'IMG_5593.JPG', 'IMG_5578.JPG', 
+                'IMG_5603.JPG', 'IMG_5589.JPG', 'IMG_5577.JPG', 'IMG_5601.JPG', 'IMG_5587.JPG', 'IMG_5575.JPG',
+                'IMG_5599.JPG', 'IMG_5586.JPG', 'IMG_5571.JPG', 'IMG_5597.JPG', 'IMG_5584.JPG', 'IMG_5572.JPG', 
+                'IMG_5594.JPG', 'IMG_5583.JPG', 'IMG_5606.JPG', 'IMG_5592.JPG', 'IMG_5580.JPG', 'IMG_5604.JPG',
+                'IMG_5591.JPG', 'IMG_5579.JPG', 'IMG_5602.JPG', 'IMG_5590.JPG', 'IMG_5576.JPG', 'IMG_5600.JPG', 
+                'IMG_5588.JPG', 'IMG_5574.JPG', 'IMG_5598.JPG', 'IMG_5585.JPG', 'IMG_5573.JPG', 'IMG_5596.JPG'
+            ] %}
+
+            {% for file in filenames %}
+            <div class="col-4 col-md-3 col-lg-2">
+                <div class="photo-slot">
+                    <img src="{{ url_for('static', filename='images/photography/' + file) }}" 
+                    alt="Frame {{ loop.index }}"
+                    class="img-fluid"
+                    style="cursor: pointer;"
+                    onclick="openLightbox(this.src)"
+                    onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#222; font-size:10px\'>MISSING</span>'">
+                        
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+
+    <section id="roll2">
+        <div class="container">
+            <h2 class="mb-2 text-muted">Roll 002</h2>
+            <p class="roll-meta">
+                Shooting
+            </p>
+            <p class="empty-roll-text">[ Images currently in development ]</p>
+        </div>
+    </section>
+
+    <section id="roll3">
+        <div class="container">
+            <h2 class="mb-2 text-muted">Roll 003</h2>
+            <p class="roll-meta">
+                Coming Soon
+            </p>
+            <p class="empty-roll-text">Shooting</p>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+<script>
+    function openLightbox(src) {
+        document.getElementById('modalImage').src = src;
+        var myModal = new bootstrap.Modal(document.getElementById('photoModal'));
+        myModal.show();
+    }
+
+    // Firefox-friendly Escape listener
+    document.addEventListener('keydown', function(event) {
+        if (event.key === "Escape" || event.keyCode === 27) {
+            var modalEl = document.getElementById('photoModal');
+            
+            // Check if modal is actually open
+            if (modalEl.classList.contains('show')) {
+                // This tells Firefox: "I'm handling this key, don't do your default thing"
+                // Note: Firefox may still exit full-screen for security, 
+                // but this ensures the modal closes smoothly.
+                event.preventDefault(); 
+                
+                var modal = bootstrap.Modal.getInstance(modalEl);
+                if (modal) {
+                    modal.hide();
+                }
+            }
+        }
+    }, true); // The 'true' here is key—it listens during the "capture" phase
+</script>

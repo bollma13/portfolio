@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="px-5">
+        <section id="home">
+            <h2 class="display-5 fw-bold">Overview</h2>
+            <p class="lead">Hardware Validation Engineer specializing in high-power R&D.</p>
+            <p>I thrive in lab environments building custom test infrastructure, automating complex hardware validation sequences, and ensuring system reliability at scale.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <p><strong>Languages:</strong> Python, C++, Bash</p>
+                    <p><strong>Hardware:</strong> Allegro, High-Voltage Validation, Oscilloscopes, Spectrum Analyzers</p>
+                </div>
+                <div class="col-md-6">
+                    <p><strong>Tools:</strong> Git, Linux, LabVIEW, MATLAB</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Experience</h2>
+            <h4>S&C Electric Company</h4>
+            <p class="text-muted">Hardware Validation Engineer</p>
+            <ul>
+                <li>Lead developer for 10-channel high-speed sequencer used in grid-scale switchgear testing.</li>
+                <li>Automated high-voltage impulse tests, reducing manual bench time by 40%.</li>
+                <li>Developed custom Python drivers for legacy GPIB/Ethernet lab equipment.</li>
+            </ul>
+        </section>
+
+        <section id="education">
+            <h2>Education</h2>
+            <div class="mb-3">
+                <h5 class="mb-0">University Name</h5>
+                <p class="mb-0">MS in Electrical & Computer Engineering | 3.8 GPA</p>
+                <p class="text-muted small">Specialization in Power Systems and Embedded Control</p>
+            </div>
+        </section>
+    </div>
+{% endblock %}

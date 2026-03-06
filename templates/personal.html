@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+<section id="personal-intro">
+    <div class="container">
+        <h2 class="fw-bold">Beyond the Bench</h2>
+        <div class="row">
+            <div class="col-lg-8">
+                <p class="lead text-muted">
+                    While my professional life is dedicated to hardware validation and electrical engineering, 
+                    I find balance through technical hobbies and visual storytelling.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="hobbies">
+    <div class="container">
+        <h2 class="fw-bold">Hobbies & Interests</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <h4 class="text-white h5 text-uppercase mb-3" style="letter-spacing: 1px;">Technical Maker</h4>
+                <p class="text-muted">
+                    I enjoy restoring vintage audio equipment and building custom mechanical keyboards. 
+                    Most recently, I've been experimenting with home automation using Home Assistant 
+                    and ESP32 microcontrollers to optimize my lab environment.
+                </p>
+            </div>
+            <div class="col-md-6 mb-4">
+                <h4 class="text-white h5 text-uppercase mb-3" style="letter-spacing: 1px;">The Great Outdoors</h4>
+                <p class="text-muted">
+                    Since moving to California, I’ve spent my weekends hiking the Santa Cruz Mountains 
+                    and exploring the Pacific coast. It’s a vital way to reset after a week of 
+                    complex circuit analysis and testing.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="photography">
+    <div class="container">
+        <h2 class="fw-bold">Photography</h2>
+        <div class="row g-3">
+            <div class="col-md-4">
+                <div style="height: 250px; background: #1a1a1a; border: 1px solid #333; display: flex; align-items: center; justify-content: center;">
+                    <span class="text-muted small">Image Placeholder</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div style="height: 250px; background: #1a1a1a; border: 1px solid #333; display: flex; align-items: center; justify-content: center;">
+                    <span class="text-muted small">Image Placeholder</span>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div style="height: 250px; background: #1a1a1a; border: 1px solid #333; display: flex; align-items: center; justify-content: center;">
+                    <span class="text-muted small">Image Placeholder</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <p class="text-muted mb-4">Capturing industrial landscapes and architectural geometry.</p>
+            <a href="/personal/photography" class="btn btn-outline-primary px-5 py-3 text-uppercase fw-bold" style="letter-spacing: 1.5px;">
+                Photography
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
