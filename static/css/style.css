@@ -8,6 +8,10 @@ body {
     line-height: 1.8;
 }
 
+section[id] {
+    scroll-margin-top: 80px;
+}
+
 .navbar {
     background-color: rgba(15, 15, 15, 0.98) !important;
     border-bottom: 1px solid #2a2a2a; 
