@@ -1,84 +1,126 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photography | Samuel Bollman</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <style>
-        body { background-color: #0f0f0f; color: #fff; scroll-behavior: smooth; }
+{% extends "base.html" %}
+
+{% block content %}
+<style>
+    body { background-color: #0f0f0f; color: #fff; scroll-behavior: smooth; }
+    
+    .photo-nav {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        background: rgba(15, 15, 15, 0.98);
+        border-bottom: 1px solid #2a2a2a;
+        z-index: 1000;
+        padding: 15px 0;
+    }
+
+    .back-link { color: #888; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
+    .back-link:hover { color: #fff; }
+
+    .roll-link { color: #666; text-decoration: none; font-size: 0.8rem; margin-left: 20px; text-transform: uppercase; letter-spacing: 2px; }
+    .roll-link:hover { color: #fff; }
+
+    section { padding: 80px 0; border-bottom: none !important; }
+    #roll1 { padding-top: 140px; }
+
+    .page-divider {
+        border: 0;
+        border-top: 1px solid #2a2a2a !important;
+        opacity: 1;
+        margin-top: 60px;
+        margin-bottom: 0;
+        width: 100%;
+    }
+
+    .photo-slot {
+        aspect-ratio: 3 / 2;
+        background-color: #151515;
+        border: 1px solid #222;
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .photo-slot img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        opacity: 0.8;
+        transition: 0.3s;
+    }
+
+    .photo-slot:hover img { opacity: 1; }
+
+    /* Hide broken image icon */
+    .photo-slot img.error {
+        display: none;
+    }
+
+    /* Show frame number from data-frame attribute if image fails */
+    .photo-slot:has(img.error)::after {
+        content: attr(data-frame);
+        color: #666;
+        font-family: monospace;
+        font-size: 12px;
+    }
+
+    .roll-meta { 
+        color: #666; 
+        font-size: 0.9rem; 
+        margin-bottom: 40px; 
+        max-width: 800px;
+        line-height: 1.6;
+    }
+</style>
+
+<nav class="photo-nav">
+    <div class="container d-flex justify-content-between align-items-center">
+        <a href="/personal" class="back-link">&lt; Back</a>
+        <div>
+            <a href="#roll1" class="roll-link">Roll 001</a>
+            <a href="#roll2" class="roll-link">Roll 002</a>
+            <a href="#roll3" class="roll-link">Roll 003</a>
+        </div>
+    </div>
+</nav>
+
+<section id="roll1">
+    <div class="container">
+        <h2 class="mb-2">Roll 001</h2>
+        <p class="roll-meta">
+            Test images, Chicago winter, ski trip.
+        </p>
         
-        /* Photography Fixed Header */
-        .photo-nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(15, 15, 15, 0.98);
-            border-bottom: 1px solid #2a2a2a;
-            z-index: 1000;
-            padding: 15px 0;
-        }
+        <div class="row g-2">
+            {% set filenames = [
+                'IMG_5607.jpg', 'IMG_5595.jpg', 'IMG_5581.jpg', 'IMG_5605.jpg', 'IMG_5593.jpg', 'IMG_5578.jpg', 
+                'IMG_5603.jpg', 'IMG_5589.jpg', 'IMG_5577.jpg', 'IMG_5601.jpg', 'IMG_5587.jpg', 'IMG_5575.jpg',
+                'IMG_5599.jpg', 'IMG_5586.jpg', 'IMG_5571.jpg', 'IMG_5597.jpg', 'IMG_5584.jpg', 'IMG_5572.jpg', 
+                'IMG_5594.jpg', 'IMG_5583.jpg', 'IMG_5606.jpg', 'IMG_5592.jpg', 'IMG_5580.jpg', 'IMG_5604.jpg',
+                'IMG_5591.jpg', 'IMG_5579.jpg', 'IMG_5602.jpg', 'IMG_5590.jpg', 'IMG_5576.jpg', 'IMG_5600.jpg', 
+                'IMG_5588.jpg', 'IMG_5574.jpg', 'IMG_5598.jpg', 'IMG_5585.jpg', 'IMG_5573.jpg', 'IMG_5596.jpg'
+            ] %}
 
-        .back-link { color: #888; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
-        .back-link:hover { color: #fff; }
-
-        .roll-link { color: #666; text-decoration: none; font-size: 0.8rem; margin-left: 20px; text-transform: uppercase; letter-spacing: 2px; }
-        .roll-link:hover { color: #fff; }
-
-        /* KILL FULL-WIDTH LINES: Forces sections to have no border */
-        section { padding: 80px 0; border-bottom: none !important; }
-        
-        /* Offset for fixed header */
-        #roll1 { padding-top: 140px; }
-
-        /* CENTERED DIVIDER: Matches Index/Projects width */
-        .page-divider {
-            border: 0;
-            border-top: 1px solid #2a2a2a !important;
-            opacity: 1;
-            margin-top: 60px;
-            margin-bottom: 0;
-            width: 100%;
-        }
-
-        /* 35mm Film Grid Styling */
-        .photo-slot {
-            aspect-ratio: 3 / 2;
-            background-color: #151515;
-            border: 1px solid #222;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .photo-slot img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.8;
-            transition: 0.3s;
-        }
-
-        .photo-slot:hover img { opacity: 1; }
-
-        .roll-meta { 
-            color: #666; 
-            font-size: 0.9rem; 
-            margin-bottom: 40px; 
-            max-width: 800px;
-            line-height: 1.6;
-        }
-
-        .empty-roll-text {
-            color: #333;
-            font-style: italic;
-            font-size: 0.85rem;
-        }
-    </style>
-</head>
+            {% for file in filenames %}
+            <div class="col-4 col-md-3 col-lg-2">
+                <div class="photo-slot" data-frame='{{ "%03d"|format(loop.index) }}'>
+                    <img src="{{ url_for('static', filename='images/photography/' + file) }}" 
+                         alt="Frame {{ loop.index }}"
+                         class="img-fluid"
+                         style="cursor: pointer;"
+                         loading="lazy"
+                         onclick="openLightbox(this.src)"
+                         onerror="this.classList.add('error');">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <hr class="page-divider">
+    </div>
+</section>
 
 <div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
@@ -90,93 +132,11 @@
     </div>
 </div>
 
-<body>
-
-    <nav class="photo-nav">
-        <div class="container d-flex justify-content-between align-items-center">
-            <a href="/personal" class="back-link">&lt; Back</a>
-            <div>
-                <a href="#roll1" class="roll-link">Roll 001</a>
-                <a href="#roll2" class="roll-link">Roll 002</a>
-                <a href="#roll3" class="roll-link">Roll 003</a>
-            </div>
-        </div>
-    </nav>
-
-    <section id="roll1">
-        <div class="container">
-            <h2 class="mb-2">Roll 001</h2>
-            <p class="roll-meta">
-                Captured on 35mm film. This sequence is ordered from the most recent 
-                frames back through the roll.
-            </p>
-            
-            <div class="row g-2">
-                {% set filenames = [
-                'IMG_5607.jpg', 'IMG_5595.jpg', 'IMG_5581.jpg', 'IMG_5605.jpg', 'IMG_5593.jpg', 'IMG_5578.jpg', 
-                'IMG_5603.jpg', 'IMG_5589.jpg', 'IMG_5577.jpg', 'IMG_5601.jpg', 'IMG_5587.jpg', 'IMG_5575.jpg',
-                'IMG_5599.jpg', 'IMG_5586.jpg', 'IMG_5571.jpg', 'IMG_5597.jpg', 'IMG_5584.jpg', 'IMG_5572.jpg', 
-                'IMG_5594.jpg', 'IMG_5583.jpg', 'IMG_5606.jpg', 'IMG_5592.jpg', 'IMG_5580.jpg', 'IMG_5604.jpg',
-                'IMG_5591.jpg', 'IMG_5579.jpg', 'IMG_5602.jpg', 'IMG_5590.jpg', 'IMG_5576.jpg', 'IMG_5600.jpg', 
-                'IMG_5588.jpg', 'IMG_5574.jpg', 'IMG_5598.jpg', 'IMG_5585.jpg', 'IMG_5573.jpg', 'IMG_5596.jpg'
-            ] %}
-
-                {% for file in filenames %}
-                <div class="col-4 col-md-3 col-lg-2">
-                    <div class="photo-slot">
-                        <img src="{{ url_for('static', filename='images/photography/' + file|lower) }}" 
-                        alt="Frame {{ loop.index }}"
-                        class="img-fluid"
-                        style="cursor: pointer;"
-                        loading="lazy"
-                        onclick="openLightbox(this.src)"
-                        onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#222; font-size:10px\'>MISSING</span>'">
-                    </div>
-                </div>
-                {% endfor %}
-            </div>
-            <hr class="page-divider">
-        </div>
-    </section>
-
-    <section id="roll2">
-        <div class="container">
-            <h2 class="mb-2 text-muted">Roll 002</h2>
-            <p class="roll-meta">Shooting</p>
-            <p class="empty-roll-text">[ Images currently in development ]</p>
-            <hr class="page-divider">
-        </div>
-    </section>
-
-    <section id="roll3">
-        <div class="container">
-            <h2 class="mb-2 text-muted">Roll 003</h2>
-            <p class="roll-meta">Coming Soon</p>
-            <p class="empty-roll-text">Shooting</p>
-        </div>
-    </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <script>
-        function openLightbox(src) {
-            document.getElementById('modalImage').src = src;
-            var myModal = new bootstrap.Modal(document.getElementById('photoModal'));
-            myModal.show();
-        }
-
-        document.addEventListener('keydown', function(event) {
-            if (event.key === "Escape" || event.keyCode === 27) {
-                var modalEl = document.getElementById('photoModal');
-                if (modalEl.classList.contains('show')) {
-                    event.preventDefault(); 
-                    var modal = bootstrap.Modal.getInstance(modalEl);
-                    if (modal) {
-                        modal.hide();
-                    }
-                }
-            }
-        }, true);
-    </script>
-</body>
-</html>
+<script>
+    function openLightbox(src) {
+        document.getElementById('modalImage').src = src;
+        var myModal = new bootstrap.Modal(document.getElementById('photoModal'));
+        myModal.show();
+    }
+</script>
+{% endblock %}
