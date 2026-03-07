@@ -26,8 +26,21 @@
         .roll-link { color: #666; text-decoration: none; font-size: 0.8rem; margin-left: 20px; text-transform: uppercase; letter-spacing: 2px; }
         .roll-link:hover { color: #fff; }
 
-        section { padding: 140px 0 80px 0; border-bottom: 1px solid #2a2a2a; }
-        section:last-of-type { border-bottom: none; }
+        /* KILL FULL-WIDTH LINES: Forces sections to have no border */
+        section { padding: 80px 0; border-bottom: none !important; }
+        
+        /* Offset for fixed header */
+        #roll1 { padding-top: 140px; }
+
+        /* CENTERED DIVIDER: Matches Index/Projects width */
+        .page-divider {
+            border: 0;
+            border-top: 1px solid #2a2a2a !important;
+            opacity: 1;
+            margin-top: 60px;
+            margin-bottom: 0;
+            width: 100%;
+        }
 
         /* 35mm Film Grid Styling */
         .photo-slot {
@@ -66,6 +79,7 @@
         }
     </style>
 </head>
+
 <div class="modal fade" id="photoModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
         <div class="modal-content bg-transparent border-0">
@@ -75,6 +89,7 @@
         </div>
     </div>
 </div>
+
 <body>
 
     <nav class="photo-nav">
@@ -87,92 +102,81 @@
             </div>
         </div>
     </nav>
-<section id="roll1">
-    <div class="container">
-        <h2 class="mb-2">Roll 001</h2>
-        <p class="roll-meta">
-            Captured on 35mm film. This sequence is ordered from the most recent 
-            frames (IMG_5607) back through the roll.
-        </p>
-        
-        <div class="row g-2">
-            {% set filenames = [
-                'IMG_5607.JPG', 'IMG_5595.JPG', 'IMG_5581.JPG', 'IMG_5605.JPG', 'IMG_5593.JPG', 'IMG_5578.JPG', 
-                'IMG_5603.JPG', 'IMG_5589.JPG', 'IMG_5577.JPG', 'IMG_5601.JPG', 'IMG_5587.JPG', 'IMG_5575.JPG',
-                'IMG_5599.JPG', 'IMG_5586.JPG', 'IMG_5571.JPG', 'IMG_5597.JPG', 'IMG_5584.JPG', 'IMG_5572.JPG', 
-                'IMG_5594.JPG', 'IMG_5583.JPG', 'IMG_5606.JPG', 'IMG_5592.JPG', 'IMG_5580.JPG', 'IMG_5604.JPG',
-                'IMG_5591.JPG', 'IMG_5579.JPG', 'IMG_5602.JPG', 'IMG_5590.JPG', 'IMG_5576.JPG', 'IMG_5600.JPG', 
-                'IMG_5588.JPG', 'IMG_5574.JPG', 'IMG_5598.JPG', 'IMG_5585.JPG', 'IMG_5573.JPG', 'IMG_5596.JPG'
+
+    <section id="roll1">
+        <div class="container">
+            <h2 class="mb-2">Roll 001</h2>
+            <p class="roll-meta">
+                Captured on 35mm film. This sequence is ordered from the most recent 
+                frames back through the roll.
+            </p>
+            
+            <div class="row g-2">
+                {% set filenames = [
+                'img_5607.jpg', 'img_5595.jpg', 'img_5581.jpg', 'img_5605.jpg', 'img_5593.jpg', 'img_5578.jpg', 
+                'img_5603.jpg', 'img_5589.jpg', 'img_5577.jpg', 'img_5601.jpg', 'img_5587.jpg', 'img_5575.jpg',
+                'img_5599.jpg', 'img_5586.jpg', 'img_5571.jpg', 'img_5597.jpg', 'img_5584.jpg', 'img_5572.jpg', 
+                'img_5594.jpg', 'img_5583.jpg', 'img_5606.jpg', 'img_5592.jpg', 'img_5580.jpg', 'img_5604.jpg',
+                'img_5591.jpg', 'img_5579.jpg', 'img_5602.jpg', 'img_5590.jpg', 'img_5576.jpg', 'img_5600.jpg', 
+                'img_5588.jpg', 'img_5574.jpg', 'img_5598.jpg', 'img_5585.jpg', 'img_5573.jpg', 'img_5596.jpg'
             ] %}
 
-            {% for file in filenames %}
-            <div class="col-4 col-md-3 col-lg-2">
-                <div class="photo-slot">
-                    <img src="{{ url_for('static', filename='images/photography/' + file) }}" 
-                    alt="Frame {{ loop.index }}"
-                    class="img-fluid"
-                    style="cursor: pointer;"
-                    onclick="openLightbox(this.src)"
-                    onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#222; font-size:10px\'>MISSING</span>'">
-                        
+                {% for file in filenames %}
+                <div class="col-4 col-md-3 col-lg-2">
+                    <div class="photo-slot">
+                        <img src="{{ url_for('static', filename='images/photography/' + file|lower) }}" 
+                        alt="Frame {{ loop.index }}"
+                        class="img-fluid"
+                        style="cursor: pointer;"
+                        loading="lazy"
+                        onclick="openLightbox(this.src)"
+                        onerror="this.style.display='none'; this.parentElement.innerHTML='<span style=\'color:#222; font-size:10px\'>MISSING</span>'">
+                    </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
+            <hr class="page-divider">
         </div>
-    </div>
-</section>
-
+    </section>
 
     <section id="roll2">
         <div class="container">
             <h2 class="mb-2 text-muted">Roll 002</h2>
-            <p class="roll-meta">
-                Shooting
-            </p>
+            <p class="roll-meta">Shooting</p>
             <p class="empty-roll-text">[ Images currently in development ]</p>
+            <hr class="page-divider">
         </div>
     </section>
 
     <section id="roll3">
         <div class="container">
             <h2 class="mb-2 text-muted">Roll 003</h2>
-            <p class="roll-meta">
-                Coming Soon
-            </p>
+            <p class="roll-meta">Coming Soon</p>
             <p class="empty-roll-text">Shooting</p>
         </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-</html>
 
+    <script>
+        function openLightbox(src) {
+            document.getElementById('modalImage').src = src;
+            var myModal = new bootstrap.Modal(document.getElementById('photoModal'));
+            myModal.show();
+        }
 
-
-<script>
-    function openLightbox(src) {
-        document.getElementById('modalImage').src = src;
-        var myModal = new bootstrap.Modal(document.getElementById('photoModal'));
-        myModal.show();
-    }
-
-    // Firefox-friendly Escape listener
-    document.addEventListener('keydown', function(event) {
-        if (event.key === "Escape" || event.keyCode === 27) {
-            var modalEl = document.getElementById('photoModal');
-            
-            // Check if modal is actually open
-            if (modalEl.classList.contains('show')) {
-                // This tells Firefox: "I'm handling this key, don't do your default thing"
-                // Note: Firefox may still exit full-screen for security, 
-                // but this ensures the modal closes smoothly.
-                event.preventDefault(); 
-                
-                var modal = bootstrap.Modal.getInstance(modalEl);
-                if (modal) {
-                    modal.hide();
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape" || event.keyCode === 27) {
+                var modalEl = document.getElementById('photoModal');
+                if (modalEl.classList.contains('show')) {
+                    event.preventDefault(); 
+                    var modal = bootstrap.Modal.getInstance(modalEl);
+                    if (modal) {
+                        modal.hide();
+                    }
                 }
             }
-        }
-    }, true); // The 'true' here is key—it listens during the "capture" phase
-</script>
+        }, true);
+    </script>
+</body>
+</html>
