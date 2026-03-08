@@ -263,3 +263,35 @@ section:last-of-type {
         max-width: 70%;
     }
 }
+
+/* Mobile vertical stacking for dates and locations */
+@media (max-width: 768px) {
+    .item-header {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        gap: 5px; /* Adds a small space between the title and the date */
+    }
+
+    .item-date {
+        text-align: left !important;
+        margin-top: 2px;
+        font-size: 0.85rem; /* Slightly smaller for a cleaner look on mobile */
+    }
+
+    .company-group {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+
+    .item-location {
+        margin-left: 0 !important;
+        margin-top: 2px;
+    }
+    
+    /* Optional: If you have the GPA next to the degree, ensure it doesn't wrap weirdly */
+    .role-title + .text-muted {
+        display: block;
+        margin-left: 0 !important;
+        margin-top: 4px;
+    }
+}
