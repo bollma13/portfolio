@@ -6,10 +6,23 @@
     <title>Photography | Samuel Bollman</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    
     <style>
-        body { background-color: #0f0f0f; color: #fff; scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; }
+        #roll1, #roll2, #roll3 {
+            scroll-margin-top: 100px !important; 
+        }
+        section { 
+            padding-top: 40px !important;    
+            padding-bottom: 0px !important; 
+            /* border-bottom: none !important;  */
+        }
         
-        /* Photography Fixed Header */
+        #roll1 {
+            padding-top: 100px !important; 
+        }
+        body { background-color: #0f0f0f; color: #fff; }
+    
         .photo-nav {
             position: fixed;
             top: 0;
@@ -20,20 +33,25 @@
             padding: 15px 0;
         }
 
+        section:before {
+            display: none !important;
+            content: none !important;
+        }
+
         .back-link { color: #888; text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
         .back-link:hover { color: #fff; }
 
         .roll-link { color: #666; text-decoration: none; font-size: 0.8rem; margin-left: 20px; text-transform: uppercase; letter-spacing: 2px; }
         .roll-link:hover { color: #fff; }
 
-        section { padding: 80px 0; border-bottom: none !important; }
+        section { padding: 0px 0; border-bottom: none !important; }
         #roll1 { padding-top: 140px; }
 
         .page-divider {
             border: 0;
             border-top: 1px solid #2a2a2a !important;
             opacity: 1;
-            margin-top: 60px;
+            margin-top: 40px;
             margin-bottom: 0;
             width: 100%;
         }
@@ -60,7 +78,6 @@
 
         .photo-slot:hover img { opacity: 1; }
 
-        /* Style for the frame numbers when image is missing */
         .photo-slot img.error { display: none; }
         .photo-slot:has(img.error)::after {
             content: attr(data-frame);
@@ -72,8 +89,8 @@
         .roll-meta { 
             color: #666; 
             font-size: 0.9rem; 
-            margin-bottom: 40px; 
-            max-width: 800px;
+            margin-bottom: 20px; 
+            /* max-width: 800px; */
             line-height: 1.6;
         }
 
@@ -111,8 +128,7 @@
         <div class="container">
             <h2 class="mb-2">Roll 001</h2>
             <p class="roll-meta">
-                Captured on 35mm film. This sequence is ordered from the most recent 
-                frames back through the roll.
+                This roll includes pictures from Chicago winter and Michigan's Upper Peninsula. Pictures captured on UltraMax 400 film.
             </p>
             
             <div class="row g-2">
@@ -145,18 +161,33 @@
 
     <section id="roll2">
         <div class="container">
-            <h2 class="mb-2 text-muted">Roll 002</h2>
-            <p class="roll-meta">Shooting</p>
-            <p class="empty-roll-text">[ Images currently in development ]</p>
+            <h2 class="mb-2">Roll 002</h2>
+            <p class="roll-meta">
+                
+            </p>
+            <p class="empty-roll-text">[ Coming soon ]</p>
             <hr class="page-divider">
         </div>
     </section>
 
     <section id="roll3">
         <div class="container">
-            <h2 class="mb-2 text-muted">Roll 003</h2>
-            <p class="roll-meta">Coming Soon</p>
-            <p class="empty-roll-text">Shooting</p>
+            <h2 class="mb-2">Roll 003</h2>
+            <p class="roll-meta">
+                
+            </p>
+            <p class="empty-roll-text">[ Coming soon ]</p>
+            <!-- <hr class="page-divider"> -->
+        </div>
+    </section>
+    <section id="roll4">
+        <div class="container">
+            <h2 class="mb-2"></h2>
+            <p class="roll-meta">
+                
+            </p>
+            <!-- <p class="empty-roll-text">[ Coming soon ]</p> -->
+            <!-- <hr class="page-divider"> -->
         </div>
     </section>
 
@@ -184,3 +215,4 @@
     </script>
 </body>
 </html>
+

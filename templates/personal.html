@@ -1,72 +1,81 @@
 {% extends "base.html" %}
 
 {% block content %}
-<section id="personal-intro">
+<section id="personal-intro" style="padding: 80px 0; border-bottom: 1px solid #2a2a2a;">
     <div class="container">
-        <h2 class="fw-bold">Beyond the Bench</h2>
-        <div class="row">
-            <div class="col-lg-8">
-                <p class="lead text-muted">
-                    While my professional life is dedicated to hardware validation and electrical engineering, 
-                    I find balance through technical hobbies and visual storytelling.
+        <div class="row align-items-center">
+            <div class="col-lg-7">
+                <h2 class="fw-bold mb-3">About</h2>
+                <p class="lead text-muted mb-4">
+                    I’m a West Michigan native who loves the outdoors and Michigan State sports. 
+                    In my free time I enjoy backpacking, skiing, water sports, and running. 
+                    When I’m not working on a project, I’m usually outside, listening to a book, or playing Counter-Strike.
                 </p>
+
+                <!-- <div class="row mt-4">
+                    <div class="col-6 col-md-4">
+                        <h6 class="text-white text-uppercase small fw-bold" style="letter-spacing: 1px; opacity: 0.5;">Outdoors</h6>
+                        <ul class="list-unstyled small text-muted">
+                            <li>Backpacking</li>
+                            <li>Skiing</li>
+                            <li>Water Sports</li>
+                        </ul>
+                    </div>
+                    <div class="col-6 col-md-4">
+                        <h6 class="text-white text-uppercase small fw-bold" style="letter-spacing: 1px; opacity: 0.5;">Interests</h6>
+                        <ul class="list-unstyled small text-muted">
+                            <li>Counter-Strike</li>
+                            <li>Audiobooks</li>
+                            <li>MSU Sports</li>
+                        </ul>
+                    </div>
+                </div> -->
+            </div>
+
+            <div class="col-lg-5 ps-lg-5 mt-5 mt-lg-0">
+                <div style="background: transparent; border: none; padding: 0; border-radius: 2px;">
+                    <img src="{{ url_for('static', filename='images/IMG_4470.jpg') }}" 
+                        alt="Samuel Bollman" 
+                        onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"
+                        style="width: 100%; height: auto; display: block; border-radius: 4px;">
+                    <div class="text-muted small text-center py-5" style="display: none; letter-spacing: 2px;">
+                        [ IMAGE MISSING ]
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<section id="hobbies">
+<section id="photography" style="padding: 80px 0;">
     <div class="container">
-        <h2 class="fw-bold">Hobbies & Interests</h2>
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <h4 class="text-white h5 text-uppercase mb-3" style="letter-spacing: 1px;">Technical Maker</h4>
-                <p class="text-muted">
-                    I enjoy restoring vintage audio equipment and building custom mechanical keyboards. 
-                    Most recently, I've been experimenting with home automation using Home Assistant 
-                    and ESP32 microcontrollers to optimize my lab environment.
-                </p>
-            </div>
-            <div class="col-md-6 mb-4">
-                <h4 class="text-white h5 text-uppercase mb-3" style="letter-spacing: 1px;">The Great Outdoors</h4>
-                <p class="text-muted">
-                    Since moving to California, I’ve spent my weekends hiking the Santa Cruz Mountains 
-                    and exploring the Pacific coast. It’s a vital way to reset after a week of 
-                    complex circuit analysis and testing.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+        <div class="d-flex justify-content-between align-items-end mb-4">
+            <h2 class="fw-bold mb-0">Photography</h2>
 
-<section id="photography">
-    <div class="container">
-        <h2 class="fw-bold">Photography</h2>
+            <a href="/personal/photography" class="text-muted small text-uppercase text-decoration-none" style="letter-spacing: 1px;">View Gallery →</a>
+        </div>
+        <div class="mt-4">
+            <p class="text-muted small">I recently got a Canon AE-1 film camera and have been taking photos on 35mm.</p>
+        </div>
+        
         <div class="row g-3">
             <div class="col-md-4">
-                <div style="height: 250px; background: #1a1a1a; border: 1px solid #333; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                    <img src="{{ url_for('static', filename='images/photography/IMG_5588.jpg') }}" alt="Photography 1" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+                <div style="height: 250px; background: #1a1a1a; border: 1px solid #333; overflow: hidden;">
+                    <img src="{{ url_for('static', filename='images/photography/IMG_5588.jpg') }}" class="w-100 h-100" style="object-fit: cover; opacity: 0.8;">
                 </div>
             </div>
-            <div class="col-md-4">
-                <div style="height: 250px; background: #1a1a1a; border: 1px solid #333; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                    <img src="{{ url_for('static', filename='images/photography/IMG_5592.jpg') }}" alt="Photography 2" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+            <div class="col-md-4 d-none d-md-block">
+                <div style="height: 250px; background: #1a1a1a; border: 1px solid #333; overflow: hidden;">
+                    <img src="{{ url_for('static', filename='images/photography/IMG_5592.jpg') }}" class="w-100 h-100" style="object-fit: cover; opacity: 0.8;">
                 </div>
             </div>
-            <div class="col-md-4">
-                <div style="height: 250px; background: #1a1a1a; border: 1px solid #333; display: flex; align-items: center; justify-content: center; overflow: hidden;">
-                    <img src="{{ url_for('static', filename='images/photography/IMG_5593.jpg') }}" alt="Photography 3" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7;">
+            <div class="col-md-4 d-none d-md-block">
+                <div style="height: 250px; background: #1a1a1a; border: 1px solid #333; overflow: hidden;">
+                    <img src="{{ url_for('static', filename='images/photography/IMG_5593.jpg') }}" class="w-100 h-100" style="object-fit: cover; opacity: 0.8;">
                 </div>
             </div>
         </div>
-
-        <div class="text-center mt-5">
-            <p class="text-muted mb-4">text.</p>
-            <a href="/personal/photography" class="btn btn-outline-primary px-5 py-3 text-uppercase fw-bold" style="letter-spacing: 1.5px;">
-                Photography
-            </a>
-        </div>
+        
     </div>
 </section>
-
 {% endblock %}

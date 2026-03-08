@@ -43,25 +43,20 @@ section[id] {
     color: #ffffff !important;
 }
 
-section {
-    padding: 100px 0; 
-    background: transparent; 
-    border: none;
-    box-shadow: none;
-    border-bottom: 1px solid #2a2a2a; 
-}
-
 section:last-of-type {
     border-bottom: none;
 }
 
-section:before {
-    display: block;
-    content: " ";
-    margin-top: -80px;
-    height: 80px;
-    visibility: hidden;
+section {
+    padding-top: 40px !important; 
+    padding-bottom: 40px !important;
 }
+
+section:before {
+    content: none !important;
+    height: 0 !important;
+}
+
 
 h2 {
     font-weight: 700;
@@ -150,10 +145,92 @@ li::before {
 }
 
 section {
-    padding: 60px 0; 
+    padding: 20px 0;
     border-bottom: 1px solid #2a2a2a !important; 
 }
 
 section:last-of-type {
     border-bottom: none !important;
+}
+.contact-subtext {
+    font-size: 0.8rem;
+    color: #999 !important; 
+    font-weight: 400;
+}
+.text-muted {
+    color: #999 !important; 
+}
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+.item-date {
+    font-size: 0.9rem;
+    color: #888;
+    font-weight: 400;
+}
+
+.item-location {
+    font-size: 0.85rem;
+    color: #555 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.role-title {
+    color: #d1d1d1;
+    font-weight: 400;
+    margin-bottom: 2px;
+}
+
+.item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    width: 100%;
+}
+
+.company-group {
+    display: flex;
+    align-items: baseline;
+    gap: 12px; 
+}
+
+.item-location {
+    font-size: 0.85rem;
+    color: #555 !important;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 400;
+}
+
+.item-date {
+    font-size: 0.9rem;
+    color: #888;
+    font-weight: 400;
+    white-space: nowrap;
+}
+
+.role-title {
+    color: #1a1a1a !important;      /* Darker font color */
+    background-color: #d1d1d1;      /* Light gray highlight */
+    font-weight: 400;               /* Makes it slightly bolder */
+    padding: 0px 6px;               /* Adds space around the text inside the highlight */
+    /* border-radius: 4px;             Rounds the corners of the highlight */
+    display: inline-block;          /* Ensures the highlight only covers the text width */
+    margin-bottom: 5px;             /* Adds a tiny gap below the highlight */
+}
+
+#photography a.text-muted {
+    transition: 0.3s; /* Smooth transition like the navbar */
+}
+
+#photography a.text-muted:hover {
+    color: #ffffff !important; /* Turns white on hover */
+    text-decoration: none;     /* Keeps it clean */
 }
