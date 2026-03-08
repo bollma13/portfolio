@@ -295,3 +295,24 @@ section:last-of-type {
         margin-top: 4px;
     }
 }
+
+/* Vertical separator for the Personal link */
+@media (min-width: 992px) {
+    .nav-separator {
+        border-left: 1px solid #444; /* Subtle gray line */
+        margin-left: 10px;            /* Space before the line */
+        padding-left: 20px !important; /* Space after the line */
+        height: 20px;                 /* Matches the height of your text */
+        display: flex;
+        align-items: center;
+    }
+}
+
+/* Ensure the line disappears on mobile/hamburger menu */
+@media (max-width: 991px) {
+    .nav-separator {
+        border-left: none !important;
+        margin-left: 0;
+        padding-left: 3px !important; /* Reset to match other mobile links */
+    }
+}
