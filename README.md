@@ -2,7 +2,7 @@
 
 A responsive, dark-themed engineering portfolio built with Flask and Bootstrap 5. This site is designed to bridge the gap between academic research and industrial R&D, showcasing a background in Electrical and Computer Engineering.
 
-## 🛠️ Tech Stack
+## Tech
 * **Backend:** Python (Flask)
 * **Frontend:** HTML5, Custom CSS, Bootstrap 5
 * **Deployment:** Render
