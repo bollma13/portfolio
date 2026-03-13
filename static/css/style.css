@@ -1,4 +1,3 @@
-/*  */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
 body { 
@@ -12,9 +11,10 @@ section[id] {
     scroll-margin-top: 100px !important; 
 }
 
+/* --- NAVIGATION --- */
 .navbar {
     background-color: rgba(15, 15, 15, 0.98) !important;
-    border-bottom: 1px solid #2a2a2a; 
+    border-bottom: 1px solid #222; 
     padding: 1rem 0;
 }
 
@@ -22,12 +22,6 @@ section[id] {
     font-weight: 700;
     color: #ffffff !important;
     letter-spacing: -0.5px;
-}
-
-.contact-subtext {
-    font-size: 0.8rem;
-    color: #666 !important;
-    font-weight: 400;
 }
 
 .nav-link {
@@ -43,21 +37,7 @@ section[id] {
     color: #ffffff !important;
 }
 
-section:last-of-type {
-    border-bottom: none;
-}
-
-section {
-    padding-top: 40px !important; 
-    padding-bottom: 40px !important;
-}
-
-section:before {
-    content: none !important;
-    height: 0 !important;
-}
-
-
+/* --- TITLES & HEADERS --- */
 h2 {
     font-weight: 700;
     font-size: 1.5rem;
@@ -67,73 +47,29 @@ h2 {
     letter-spacing: 2px;
 }
 
-.btn-outline-primary {
-    border-radius: 4px; 
-    border: 1px solid #444;
-    color: #eee;
-    font-size: 0.8rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.btn-outline-primary:hover {
-    background-color: #ffffff;
-    color: #000;
-    border-color: #ffffff;
-}
-
-.contact-subtext .btn-sm {
-    font-size: 0.7rem;
-    padding: 2px 10px;
-    vertical-align: middle;
-    text-transform: uppercase;
+/* Unified Technical Badge Style for Experience & Education */
+.job-title-badge, .role-title {
+    background-color: #1a1a1a; 
+    color: #b1b1b1 !important; 
+    border: 1px solid #333;
+    font-weight: 500;
     letter-spacing: 0.5px;
-    margin-top: -3px; 
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    padding: 2px 6px;
+    border-radius: 2px;
+    display: inline-block;
+    margin-bottom: 10px;
 }
 
-.contact-subtext a.btn:hover {
-    color: #000 !important;
-    background-color: #fff !important;
+/* --- SECTIONS --- */
+section {
+    padding: 60px 0 !important;
+    border-bottom: 1px solid #222 !important; 
 }
 
-ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
-li {
-    margin-bottom: 15px;
-    position: relative;
-    padding-left: 20px;
-}
-
-li::before {
-    content: "—";
-    position: absolute;
-    left: 0;
-    color: #444;
-}
-
-.gallery-item {
-    overflow: hidden;
-    border-radius: 8px;
-    background-color: #1a1a1a;
-    transition: transform 0.3s ease;
-}
-
-.gallery-item img {
-    transition: transform 0.5s ease, opacity 0.3s ease;
-    filter: grayscale(20%); 
-    cursor: pointer;
-}
-
-.gallery-item:hover img {
-    transform: scale(1.05); 
-    filter: grayscale(0%); 
-}
-
-.gallery-item:hover {
-    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+section:last-of-type {
+    border-bottom: none !important;
 }
 
 .section-divider {
@@ -141,53 +77,10 @@ li::before {
     height: 1px;
     background: #333; 
     margin: 40px auto;
-    width: 80%; /
+    width: 80%;
 }
 
-section {
-    padding: 20px 0;
-    border-bottom: 1px solid #2a2a2a !important; 
-}
-
-section:last-of-type {
-    border-bottom: none !important;
-}
-.contact-subtext {
-    font-size: 0.8rem;
-    color: #999 !important; 
-    font-weight: 400;
-}
-.text-muted {
-    color: #999 !important; 
-}
-.item-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    width: 100%;
-}
-
-.item-date {
-    font-size: 0.9rem;
-    color: #888;
-    font-weight: 400;
-}
-
-.item-location {
-    font-size: 0.85rem;
-    color: #555 !important;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 5px;
-    display: block;
-}
-
-/* .role-title {
-    color: #d1d1d1;
-    font-weight: 400;
-    margin-bottom: 2px;
-} */
-
+/* --- EXPERIENCE & EDUCATION ITEMS --- */
 .item-header {
     display: flex;
     justify-content: space-between;
@@ -203,7 +96,7 @@ section:last-of-type {
 
 .item-location {
     font-size: 0.85rem;
-    color: #555 !important;
+    color: #666 !important; /* Deeper neutral gray */
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: 400;
@@ -216,103 +109,171 @@ section:last-of-type {
     white-space: nowrap;
 }
 
-.role-title {
-    color: #1a1a1a !important;      /* Darker font color */
-    background-color: #d1d1d1;      /* Light gray highlight */
-    font-weight: 400;               /* Makes it slightly bolder */
-    padding: 0px 6px;               /* Adds space around the text inside the highlight */
-    /* border-radius: 4px;             Rounds the corners of the highlight */
-    display: inline-block;          /* Ensures the highlight only covers the text width */
-    margin-bottom: 10px;             /* Adds a tiny gap below the highlight */
-    /* margin-top: 10px; */
-    
+/* List Styling */
+ul {
+    list-style-type: none;
+    padding-left: 0;
 }
 
-#photography a.text-muted {
-    transition: 0.3s; /* Smooth transition like the navbar */
+li {
+    margin-bottom: 15px;
+    position: relative;
+    padding-left: 20px;
+}
+
+li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: #555; /* Subtle marker color */
+}
+
+/* --- BUTTONS --- */
+.btn-outline-primary {
+    border-radius: 4px; 
+    border: 1px solid #444;
+    color: #eee;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+
+/* Update the hover state for all outline buttons */
+.btn-outline-primary:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Subtle 10% white tint */
+    color: #ffffff;                             /* Keeps text bright white */
+    border-color: #666;                         /* Subtle grey border instead of white */
+}
+
+/* --- PHOTOGRAPHY & IMAGES --- */
+.gallery-item {
+    overflow: hidden;
+    border-radius: 4px; /* Matches badge radius */
+    background-color: #1a1a1a;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item img {
+    transition: 0.5s ease;
+    filter: grayscale(100%) brightness(0.8); /* Technical desaturated look */
+    cursor: pointer;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.03); 
+    filter: grayscale(0%) brightness(1); /* Vivid on hover */
+}
+
+.gallery-item:hover {
+    box-shadow: 0 10px 20px rgba(0,0,0,0.5);
 }
 
 #photography a.text-muted:hover {
-    color: #ffffff !important; /* Turns white on hover */
-    text-decoration: none;     /* Keeps it clean */
+    color: #ffffff !important;
+    text-decoration: none;
 }
 
+/* --- CONTACT & MISC --- */
+.contact-subtext {
+    font-size: 0.8rem;
+    color: #999 !important; 
+    font-weight: 400;
+}
 
-/* Mobile Menu Styling */
+.text-muted {
+    color: #888 !important; 
+}
+
+/* --- RESPONSIVENESS --- */
 @media (max-width: 991px) {
     .navbar-collapse {
-        background: #111; /* Dark background for the mobile drawer */
+        background: #111;
         padding: 1rem;
         border-radius: 8px;
         margin-top: 10px;
         border: 1px solid #333;
     }
-
     .nav-link {
         text-align: center;
         padding: 12px 0;
         border-bottom: 1px solid #222;
     }
-
-    .nav-link:last-child {
-        border-bottom: none;
-    }
-
-    /* Prevent the brand group from being squished */
-    .navbar-brand-group {
-        max-width: 70%;
-    }
 }
 
-/* Mobile vertical stacking for dates and locations */
 @media (max-width: 768px) {
     .item-header {
         flex-direction: column !important;
         align-items: flex-start !important;
-        gap: 5px; /* Adds a small space between the title and the date */
+        gap: 5px;
     }
-
-    .item-date {
-        text-align: left !important;
-        margin-top: 2px;
-        font-size: 0.85rem; /* Slightly smaller for a cleaner look on mobile */
-    }
-
     .company-group {
         flex-direction: column !important;
         align-items: flex-start !important;
     }
-
     .item-location {
         margin-left: 0 !important;
-        margin-top: 2px;
     }
-    
-    /* Optional: If you have the GPA next to the degree, ensure it doesn't wrap weirdly */
-    .role-title + .text-muted {
+    .role-title + .text-muted, 
+    .job-title-badge + .text-muted {
         display: block;
         margin-left: 0 !important;
         margin-top: 4px;
     }
 }
 
-/* Vertical separator for the Personal link */
+/* Nav Separator */
 @media (min-width: 992px) {
     .nav-separator {
-        border-left: 1px solid #444; /* Subtle gray line */
-        margin-left: 10px;            /* Space before the line */
-        padding-left: 20px !important; /* Space after the line */
-        height: 20px;                 /* Matches the height of your text */
+        border-left: 1px solid #333;
+        margin-left: 10px;
+        padding-left: 20px !important;
+        height: 20px;
         display: flex;
         align-items: center;
     }
 }
 
-/* Ensure the line disappears on mobile/hamburger menu */
-@media (max-width: 991px) {
-    .nav-separator {
-        border-left: none !important;
-        margin-left: 0;
-        padding-left: 3px !important; /* Reset to match other mobile links */
-    }
+/* Resets the Resume Button to the OG white hover and small text */
+
+.btn-outline-primary {
+    border-radius: 4px; 
+    border: 1px solid #444;
+    color: #eee;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
+
+/* Rule for Navbar and GitHub buttons (Stays White) */
+.btn-outline-primary:hover {
+    background-color: #ffffff !important;
+    color: #000 !important;
+    border-color: #ffffff !important;
+}
+
+/* Rule for Project Toggle buttons (Subtle Grey) */
+.btn[data-bs-toggle="collapse"]:hover {
+    background-color: rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    border-color: #666 !important;
+}
+
+.contact-subtext .btn-sm {
+    font-size: 0.7rem;
+    padding: 2px 10px;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: -3px; 
+}
+
+/* Removes the "—" dash from project links inside lists */
+li.list-unstyled::before {
+    content: none !important;
+}
+
+li.list-unstyled {
+    padding-left: 0 !important;
+}
+

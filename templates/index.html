@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
     <div class="container">
         <section id="home" style="padding: 80px 0; border-bottom: 1px solid #2a2a2a;">
             <div class="container">
@@ -17,14 +19,11 @@
 
                     <div class="col-lg-9 col-md-8">
                         <p class="lead">I am an R&D Electrical Engineer at S&C Electric Company, 
-                            where I develop advanced electronics for the power industry. 
+                            where I develop electronics for the power industry. 
                             I hold an M.S. in Electrical and Computer Engineering and a B.S. in Computer Engineering from Michigan State University. 
                             Through a mix of academic research, internships, and industry experience I’ve developed a strong foundation in a broad range skills. 
                             My core interests include Hardware Design, Embedded Systems, Semiconductors, and Power Electronics.
                             </p>
-                        <!-- <p>I currently work in R&D at S&C Electric Company on the Electronics team. 
-                            Through a mix of academic research, internships, and industry experience I’ve developed a strong foundation in a broad range of skills in 
-                            hardware design, embedded systems, and power electronics.</p> -->
                     </div>
                 </div>
             </div>
@@ -51,12 +50,16 @@
                         </div>
                         <span class="item-date">Jul 2025 — Present</span>
                     </div>
-                    <p class="role-title">Electrical Engineer I</p>
+                    <span class="job-title-badge">Electrical Engineer I</span>
                     <ul>
-                        <li>Designed schematics and C/C++ embedded firmware for 10-channel sequencer to replace commercial units costing over $20k, providing precise timing for zero-crossing making/breaking.</li>
-                        <li>Led development, validation, and implementation of 10 test rack units to improve high power lab infrastructure including schematic design and a Python Tkinter GUI.</li>
-                        <li>Performed SPICE simulations, high voltage testing, and fixture design for arc voltage measurement during vacuum interrupter testing.</li>
-                        <li>Supported high power lab systems by designing Arduino-based generator controller and power supply board design testing system.</li>
+                        <li> Designed schematics and C/C++ embedded firmware for 10-channel sequencer to replace commercial units costing over $20k, providing precise timing for zero-crossing making/breaking.</li>
+                        <li> Led development, validation, and implementation of 10 test rack units to improve high power lab infrastructure including schematic design and a Python Tkinter GUI.</li>
+                        <li> Performed SPICE simulations, high voltage testing, and fixture design for arc voltage measurement during vacuum interrupter testing.</li>
+                        <li class="list-unstyled mt-2">
+                            <a href="{{ url_for('projects') }}#collapseSC" class="text-decoration-none text-primary small fw-bold">
+                                View Automated Test System Project &rarr;
+                            </a>
+                        </li>
                     </ul>
                 </div>
 
@@ -68,11 +71,10 @@
                         </div>
                         <span class="item-date">Aug 2021 — Dec 2024</span>
                     </div>
-                    <p class="role-title">Student Researcher</p>
+                    <span class="job-title-badge">Student Researcher</span>
                     <ul>
-                        <li>Co-authored research on large scale network modeling; developed Python-based simulation and optimization tools for minimizing large networks used for modeling social dynamics.</li>
-                        <li>Collaborated with faculty and PhD students on computational research projects including published work: Mathematical modeling of disinformation and effectiveness of mitigation policies.</li>
-                        <li>Participated in the professorial assistant program where I led the development of an interactive COVID-19 transmission model using the Dash-Plotly library.</li>
+                        <li> Co-authored research on large scale network modeling; developed Python-based simulation and optimization tools for minimizing large networks used for modeling social dynamics.</li>
+                        <li> Collaborated with faculty and PhD students on computational research projects including published work: Mathematical modeling of disinformation and effectiveness of mitigation policies.</li>
                     </ul>
                 </div>
 
@@ -84,51 +86,62 @@
                         </div>
                         <span class="item-date">May 2023 — Aug 2024</span>
                     </div>
-                    <p class="role-title">Project Manager Intern</p>
+                    <span class="job-title-badge">Project Manager Intern</span>
                     <ul>
-                        <li>Automated data analysis using Python and Excel to track product quality trends, improving efficiency and accuracy.</li>
-                        <li>Deployed barcode scanning system to streamline product receiving and inventory management.</li>
+                        <li> Automated data analysis using Python and Excel to track product quality trends, improving efficiency and accuracy.</li>
+                        <li> Deployed barcode scanning system to streamline product receiving and inventory management.</li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <section id="education" style="padding: 80px 0; border-bottom: none !important;">
-    <div class="container">
-        <h2>Education</h2>
-        
-        <div class="company-group mb-3">
-            <h4 class="mb-0">Michigan State University</h4>
-            <span class="item-location">East Lansing, MI</span>
-        </div>
-
-        <div class="education-entry">
-    <div class="item-header">
-        <div>
-            <span class="role-title">M.S. Electrical & Computer Engineering</span>
-            <span class="text-muted ms-md-2 d-block d-md-inline-block" style="font-size: 0.9rem;">(3.8 / 4.0 GPA)</span>
-        </div>
-        <span class="item-date">2024 — 2025</span>
-    </div>
-    <ul class="mb-5">
-        <li><strong>Graduate Certificate:</strong> Semiconductor Manufacturing, Processing, and Devices</li>
-    </ul>
-</div>
-
-        <div class="education-entry">
-            <div class="item-header" style="margin-bottom: 5px;">
-                <div>
-                    <span class="role-title">B.S. Electrical & Computer Engineering</span>
-                    <span class="text-muted ms-2" style="font-size: 0.9rem;"> 3.5 / 4.0 GPA</span>
+            <div class="container">
+                <h2>Education</h2>
+                
+                <div class="company-group mb-4">
+                    <h4 class="mb-0">Michigan State University</h4>
+                    <span class="item-location">East Lansing, MI</span>
                 </div>
-                <span class="item-date">2021 — 2024</span>
+
+                <div class="education-entry mb-5">
+                    <div class="item-header">
+                        <div>
+                            <span class="job-title-badge">M.S. Electrical & Computer Engineering</span>
+                            <span class="text-muted ms-md-2 d-block d-md-inline-block" style="font-size: 0.9rem;"> 3.8 / 4.0 GPA</span>
+                        </div>
+                        <span class="item-date">2024 — 2025</span>
+                    </div>
+                    <ul class="mb-0">
+                        <li><strong> Graduate Certificate:</strong> Semiconductor Manufacturing, Processing, and Devices</li>
+                        <li class="list-unstyled mt-2">
+                            <a href="{{ url_for('projects') }}#collapseClean" class="text-decoration-none text-primary small fw-bold">
+                                View Semiconductor Fabrication Lab Work &rarr;
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="education-entry">
+                    <div class="item-header">
+                        <div>
+                            <span class="job-title-badge">B.S. Electrical & Computer Engineering</span>
+                            <span class="text-muted ms-2" style="font-size: 0.9rem;"> 3.5 / 4.0 GPA</span>
+                        </div>
+                        <span class="item-date">2021 — 2024</span>
+                    </div>
+                    <ul class="mb-0">
+                        <li><strong> Concentration:</strong> Smart Systems</li>
+                        <li> Honors College</li>
+                        <li><strong>Capstone Project:</strong> Radar-Based Slope Measurement System with Texas Instruments.</li>
+                        <li class="list-unstyled mt-2">
+                            <a href="{{ url_for('projects') }}#collapseTI" class="text-decoration-none text-primary small fw-bold">
+                                View TI Capstone Details &rarr;
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <ul class="mb-0">
-                <li><strong>Concentration:</strong> Smart Systems</li>
-                <li>Honors College</li>
-            </ul>
-        </div>
-    </div>
-</section>
+        </section>
     </div>
 {% endblock %}
