@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bridge Monitor | System 3985104927</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('/static/images/photography/IMG_5588.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Courier New', Courier, monospace;
+            color: #00ff00;
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.85);
+            min-height: 100vh;
+            padding: 40px;
+            box-sizing: border-box;
+        }
+
+        /* Top Bar Layout */
+        .top-monitor-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: stretch;
+            margin-bottom: 30px;
+            gap: 20px;
+        }
+
+        .status-box {
+            border: 2px solid #00ff00;
+            padding: 20px;
+            background: rgba(0, 20, 0, 0.7);
+            flex: 1;
+            max-width: 400px;
+        }
+
+        .status-val {
+            font-size: 3.5em;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .status-box.OPEN { border-color: #00ff00; color: #00ff00; }
+        .status-box.CLOSED { border-color: #ff0000; color: #ff0000; box-shadow: 0 0 20px #ff0000; }
+
+        /* Analytics Box & Drink Counter */
+        .chart-box {
+            border: 1px solid #00ff00;
+            padding: 20px;
+            background: rgba(0, 20, 0, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex: 2;
+            gap: 30px;
+        }
+
+        .drink-display {
+            text-align: left;
+        }
+
+        .drink-label {
+            font-size: 0.8em;
+            color: #88ff88;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .drink-number {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: #ff0000;
+            text-shadow: 0 0 10px #ff0000;
+            display: block;
+            margin-top: 5px;
+        }
+
+        /* Centered Pie Layout */
+        .pie-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-width: 150px;
+        }
+
+        .pie-chart {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid #00ff00;
+            margin-bottom: 10px;
+            background: conic-gradient(
+                #ff0000 0% var(--pct), 
+                #00ff00 var(--pct) 100%
+            );
+        }
+
+        .chart-legend { font-size: 0.8em; line-height: 1.4; text-align: center; }
+        .legend-open { color: #00ff00; }
+        .legend-closed { color: #ff0000; }
+
+        /* Fumble Alert */
+        .fumble-alert {
+            background: #ff0000;
+            color: #fff;
+            padding: 25px;
+            margin-bottom: 30px;
+            border: 4px solid #fff;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.4em;
+            text-transform: uppercase;
+            animation: fumblePulse 0.8s infinite;
+        }
+
+        h3 {
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-top: 40px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        th {
+            text-align: left;
+            padding: 15px;
+            border-bottom: 2px solid #00ff00;
+            color: #88ff88;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #224422;
+        }
+
+        .timestamp { color: #888; font-size: 0.9em; }
+        .duration-highlight { color: #ffffff; font-weight: bold; }
+
+        @keyframes fumblePulse {
+            0% { transform: scale(1); background: #ff0000; }
+            50% { transform: scale(1.01); background: #aa0000; }
+            100% { transform: scale(1); background: #ff0000; }
+        }
+
+        @keyframes blink {
+            0% { opacity: 1; }
+            50% { opacity: 0.3; }
+            100% { opacity: 1; }
+        }
+
+        /* Mobile Responsive Layout */
+        @media (max-width: 768px) {
+            .overlay { padding: 20px; }
+            .top-monitor-bar {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .status-box {
+                max-width: none;
+                margin-bottom: 20px;
+            }
+            .chart-box {
+                flex-direction: column;
+                text-align: center;
+                gap: 20px;
+            }
+            .drink-display {
+                text-align: center;
+            }
+            .status-val {
+                font-size: 2.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="overlay">
+        
+        <div class="top-monitor-bar">
+            <div class="status-box {{ data.current_status }}">
+                <div style="font-size: 0.8em; opacity: 0.8;">BRIDGE STATUS</div>
+                <div class="status-val">{{ data.current_status }}</div>
+                <div class="timestamp">LAST REPORT: {{ data.last_update }}</div>
+            </div>
+
+            <div class="chart-box" style="--pct: {{ data.metrics.pct_closed }}%;">
+                <div class="drink-display">
+                    <span style="letter-spacing: 2px; font-weight: bold;">BRIDGE UPTIME</span>
+                    <hr style="border: none; border-top: 1px solid #224422; margin: 10px 0;">
+                    <span class="drink-label">MACKINAC BRIDGE AUTHORITY HAS MADE YOU DRINK:</span>
+                    <span class="drink-number">{{ data.drink_count | default(0) }} DRINKS</span>
+                    <span style="font-size: 0.7em; color: #555; margin-top: 10px; display: block;">MONITORING SINCE 03/13/26 @ 10:20</span>
+                </div>
+
+                <div class="pie-container">
+                    <div class="pie-chart"></div>
+                    <div class="chart-legend">
+                        <span class="legend-open">■</span> OPEN: {{ data.metrics.pct_open }}%<br>
+                        <span class="legend-closed">■</span> CLOSED: {{ data.metrics.pct_closed }}%
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% if data.current_status == "CLOSED" %}
+        <div class="fumble-alert">
+            THE MACKINAC BRIDGE AUTHORITY HAS FUMBLED THE BAG AGAIN.<br>
+            [ YOU MUST HAVE A DRINK IMMEDIATELY FOR THE BRIDGE CLOSURE. ]
+        </div>
+        {% endif %}
+
+        <h3>Closure History</h3>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                    <tr>
+                        <th>TIME CLOSED</th>
+                        <th>TOTAL DURATION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for closure in data.history | reverse %}
+                    <tr>
+                        <td class="timestamp">{{ closure.closed_at }}</td>
+                        <td class="duration-highlight">
+                            {% if closure.opened_at %}
+                                {{ closure.duration }}
+                            {% else %}
+                                <span style="color: #ff0000; animation: blink 1s infinite;">
+                                    CLOSED FOR: <span id="live-timer">...</span>
+                                </span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function updateLiveTimer() {
+            // Get the closed_at timestamp from the latest history item if it's currently un-opened
+            const closedAtStr = "{{ data.history[-1].closed_at if data.history and not data.history[-1].opened_at else '' }}";
+            if (!closedAtStr) return;
+
+            // Parse "MM/DD/YY @ HH:MM" 
+            // Result of split: ["MM/DD/YY", "@", "HH:MM"] or ["MM/DD/YY", "HH:MM"]
+            const cleanStr = closedAtStr.replace('@', '').replace(/\s+/g, ' ').trim();
+            const parts = cleanStr.split(' ');
+            const dateParts = parts[0].split('/');
+            const timeParts = parts[1].split(':');
+            
+            // Year assumes 20xx
+            const year = 2000 + parseInt(dateParts[2]);
+            const month = parseInt(dateParts[0]) - 1;
+            const day = parseInt(dateParts[1]);
+            const hour = parseInt(timeParts[0]);
+            const min = parseInt(timeParts[1]);
+
+            const closedDate = new Date(year, month, day, hour, min);
+            const now = new Date();
+            
+            const diffMs = now - closedDate;
+            if (diffMs < 0) return; // Guard against clock skew
+
+            const diffHrs = Math.floor(diffMs / 3600000);
+            const diffMins = Math.floor((diffMs % 3600000) / 60000);
+            
+            const timerEl = document.getElementById('live-timer');
+            if (timerEl) {
+                timerEl.innerText = `${diffHrs}h ${diffMins}m`;
+            }
+        }
+
+        // Initialize and set interval
+        if (document.getElementById('live-timer')) {
+            updateLiveTimer();
+            setInterval(updateLiveTimer, 30000); // Update every 30 seconds
+        }
+    </script>
+</body>
+</html>
