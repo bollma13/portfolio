@@ -124,7 +124,7 @@ if __name__ == "__main__":
     
     # Navigate to the root, then into static/bridge_status.json
     # This assumes structure: my_portfolio/.github/workflows/monitor_script.py
-    file_path = os.path.join(base_dir, '..', '..', 'static', 'bridge_status.json')
+    file_path = 'static/bridge_status.json'
     
     # Ensure the static directory exists just in case
     os.makedirs(os.path.dirname(file_path), exist_ok=True)

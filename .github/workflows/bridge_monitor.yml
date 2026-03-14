@@ -1,7 +1,7 @@
 name: Bridge Status Monitor
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '3,13,23,33,43,53 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -9,14 +9,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.9'
+          
       - name: Install dependencies
-        run: pip install pytz
+        run: pip install pytz  # Critical: the script will crash without this
+
       - name: Run Monitor
         env:
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
+        # FIXED: Added the folder path so it can find your script
         run: python .github/workflows/monitor_script.py
+        
+      - name: Commit and Push
+        run: |
+          git config --global user.name "Bridge-Bot"
+          git config --global user.email "bot@sambollman.com"
+          git add static/bridge_status.json
+          # FIXED: Changed the commit message to be simpler and avoid jq errors
+          git commit -m "Bridge Status Update [skip ci]" || exit 0
+          git push
