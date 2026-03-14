@@ -118,13 +118,28 @@ def get_bridge_status():
 
 if __name__ == "__main__":
     result = get_bridge_status()
-    file_path = 'static/bridge_status.json'
+    
+    # Get the directory where THIS script lives (.github/workflows/)
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    
+    # Navigate to the root, then into static/bridge_status.json
+    # This assumes structure: my_portfolio/.github/workflows/monitor_script.py
+    file_path = os.path.join(base_dir, '..', '..', 'static', 'bridge_status.json')
+    
+    # Ensure the static directory exists just in case
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
     
     try:
         with open(file_path, 'r') as f:
             data = json.load(f)
-    except:
-        data = {"current_status": "UNKNOWN", "drink_count": 0, "history": [], "metrics": {"pct_open": 100, "pct_closed": 0}}
+    except Exception as e:
+        print(f"Starting new JSON file. Reason: {e}")
+        data = {
+            "current_status": "UNKNOWN", 
+            "drink_count": 0, 
+            "history": [], 
+            "metrics": {"pct_open": 100, "pct_closed": 0}
+        }
     
     if result:
         # Check if status flipped
@@ -158,5 +173,8 @@ if __name__ == "__main__":
     # Refresh analytics (uptime pct)
     data = update_metrics(data)
 
+    # Write the updated data back to the file
     with open(file_path, 'w') as f:
         json.dump(data, f, indent=4)
+    
+    print(f"Successfully updated {result['status'] if result else 'NO NEW DATA'} at {get_mi_now()}")
