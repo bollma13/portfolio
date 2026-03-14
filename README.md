@@ -1,6 +1,6 @@
 # Portfolio Website
 
-A responsive, dark-themed engineering portfolio built with Flask and Bootstrap 5. This site is designed to bridge the gap between academic research and industrial R&D, showcasing a background in Electrical and Computer Engineering.
+A responsive, dark-themed engineering portfolio built with Flask and Bootstrap 5. This site is designed to bridge the gap between academic research and industrial R&D, showcasing a background in Electrical and Computer Engineering. 
 
 ## Tech
 * **Backend:** Python (Flask)
