@@ -1,8 +1,8 @@
 name: Bridge Status Monitor
 on:
   schedule:
-    - cron: '*/5 * * * *'  # This runs every 5 minutes, 24/7
-  workflow_dispatch:      # This adds a "Run Now" button in the GitHub UI
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -15,17 +15,21 @@ jobs:
         with:
           python-version: '3.9'
           
+      - name: Install dependencies
+        run: pip install pytz  # Critical: the script will crash without this
+
       - name: Run Monitor
         env:
-          # These pull from the "Secrets" we set up in GitHub Settings
           GMAIL_USER: ${{ secrets.GMAIL_USER }}
           GMAIL_PASS: ${{ secrets.GMAIL_PASS }}
-        run: python monitor_script.py
+        # FIXED: Added the folder path so it can find your script
+        run: python .github/workflows/monitor_script.py
         
       - name: Commit and Push
         run: |
           git config --global user.name "Bridge-Bot"
           git config --global user.email "bot@sambollman.com"
           git add static/bridge_status.json
-          git commit -m "Bridge Status Change: $(cat static/bridge_status.json | jq -r .status)" || exit 0
+          # FIXED: Changed the commit message to be simpler and avoid jq errors
+          git commit -m "Bridge Status Update [skip ci]" || exit 0
           git push
