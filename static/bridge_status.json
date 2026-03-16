@@ -1,10 +1,10 @@
 {
-    "current_status": "CLOSED",
+    "current_status": "OPEN",
     "drink_count": 3,
-    "last_update": "03/15/26 @ 09:58",
+    "last_update": "03/16/26 @ 07:13",
     "metrics": {
-        "pct_closed": 45.1,
-        "pct_open": 54.9
+        "pct_closed": 45.8,
+        "pct_open": 54.2
     },
     "history": [
         {
@@ -19,8 +19,8 @@
         },
         {
             "closed_at": "03/15/26 @ 09:58",
-            "opened_at": null,
-            "duration": "IN PROGRESS"
+            "opened_at": "03/16/26 @ 07:13",
+            "duration": "21h 15m"
         }
     ]
 }
